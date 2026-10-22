@@ -1,164 +1,125 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#10130f">
-<title>Beast Mode | Fitness Tracker</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b100b">
+<title>Beast Mode — All-in-One Fitness</title>
 <style>
-:root{--bg:#0d100d;--panel:#171c17;--panel2:#202720;--green:#b7ff3c;--muted:#9ba697;--text:#f4f7ef;--line:#303a2e;--red:#ff796f}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top right,#26351b 0,transparent 30%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.45}
-header{max-width:1050px;margin:auto;padding:22px 18px 10px;display:flex;align-items:center;justify-content:space-between;gap:12px}
-.brand{font-weight:950;letter-spacing:1px;font-size:1.1rem}.brand span{color:var(--green)}.tag{font-size:.75rem;color:var(--green);border:1px solid #59772d;padding:5px 9px;border-radius:99px}
-main{max-width:1050px;margin:auto;padding:10px 18px 40px}.hero{padding:24px 0 20px}.eyebrow{color:var(--green);font-weight:800;text-transform:uppercase;letter-spacing:2px;font-size:.75rem}.hero h1{font-size:clamp(2.2rem,8vw,4.4rem);line-height:.98;letter-spacing:-2px;margin:12px 0}.hero h1 em{font-style:normal;color:var(--green)}.hero p{color:var(--muted);max-width:560px;margin:12px 0 0}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0 24px}.stat,.panel{background:linear-gradient(145deg,var(--panel),#131713);border:1px solid var(--line);border-radius:18px;padding:16px}.stat .num{font-size:1.65rem;font-weight:900;letter-spacing:-1px}.stat .label{font-size:.76rem;color:var(--muted);margin-top:3px}.stat .num small{font-size:.85rem;color:var(--green)}
-.layout{display:grid;grid-template-columns:1.15fr .85fr;gap:14px}.stack{display:grid;gap:14px}.panel h2{font-size:1.08rem;margin:0 0 5px}.sub{font-size:.82rem;color:var(--muted);margin:0 0 15px}.challenge{display:flex;align-items:center;gap:11px;padding:12px 0;border-top:1px solid var(--line)}.challenge:first-of-type{border-top:0}.challenge input[type=checkbox]{width:21px;height:21px;accent-color:var(--green);flex-shrink:0}.challenge label{flex:1;font-weight:650;font-size:.92rem}.challenge small{display:block;color:var(--muted);font-weight:400;font-size:.77rem}.done label{text-decoration:line-through;color:var(--muted)}.pill{font-size:.7rem;color:var(--green);background:#29351d;border-radius:99px;padding:4px 8px;white-space:nowrap}
-form{display:grid;gap:11px}label.field{display:grid;gap:5px;font-size:.82rem;color:var(--muted)}input,select,textarea{width:100%;background:#0e120e;border:1px solid var(--line);border-radius:10px;color:var(--text);padding:11px 12px;font:inherit;min-width:0}input:focus,select:focus,textarea:focus{outline:2px solid #7eae2c;border-color:transparent}.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}.btn{border:0;border-radius:11px;background:var(--green);color:#10150b;font-weight:900;padding:12px 14px;font:inherit;cursor:pointer}.btn.secondary{background:var(--panel2);color:var(--text);border:1px solid var(--line)}.btn:active{transform:scale(.99)}.bar{height:8px;background:#30382d;border-radius:20px;overflow:hidden;margin:12px 0 6px}.bar span{display:block;height:100%;background:var(--green);width:0;transition:width .2s}.muted{color:var(--muted);font-size:.8rem}.records{display:grid;gap:9px}.record{background:#101410;border:1px solid var(--line);padding:11px;border-radius:12px;display:flex;justify-content:space-between;gap:10px;font-size:.85rem}.record strong{display:block}.record small{color:var(--muted)}.empty{padding:14px;text-align:center;color:var(--muted);font-size:.85rem;border:1px dashed var(--line);border-radius:12px}.recovery-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.foot{color:var(--muted);font-size:.75rem;text-align:center;margin:24px 0 0}.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:var(--green);color:#10150b;padding:10px 15px;border-radius:12px;font-weight:800;box-shadow:0 8px 30px #0008;display:none;max-width:90%;z-index:5}
-@media(max-width:720px){.layout{grid-template-columns:1fr}.stats{gap:8px}.stat{padding:12px}.stat .num{font-size:1.4rem}.hero{padding-top:18px}.panel{padding:14px}header{padding-top:17px}}
-@media(max-width:370px){.stats{grid-template-columns:1fr}.two{grid-template-columns:1fr}.tag{font-size:.65rem}}
-</style>
-</head>
+:root{--bg:#0b100b;--panel:#171e17;--panel2:#202a20;--line:#344032;--lime:#b8ff3b;--text:#f4f7ef;--muted:#a2ad9d;--blue:#93d4ff}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 90% 0,#2b401d 0,transparent 32%),var(--bg);color:var(--text);font:15px/1.5 system-ui,-apple-system,Segoe UI,Arial,sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}header,main{max-width:1160px;margin:auto;padding-left:17px;padding-right:17px}header{padding-top:18px;padding-bottom:12px;display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{font-weight:1000;letter-spacing:1px}.brand span,.lime{color:var(--lime)}.tag{border:1px solid #58732e;color:var(--lime);border-radius:99px;padding:5px 9px;font-size:.7rem}.hero{padding:22px 0 16px}.eyebrow{color:var(--lime);font-size:.75rem;font-weight:850;letter-spacing:2px;text-transform:uppercase}.hero h1{font-size:clamp(2.4rem,7vw,4.5rem);letter-spacing:-2px;line-height:.95;margin:10px 0}.hero h1 span{color:var(--lime)}.muted,.sub{color:var(--muted);font-size:.83rem}.sub{margin:4px 0 14px}.clockbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;background:#1a2516;border:1px solid #435a2d;padding:12px 15px;border-radius:15px;margin:10px 0 17px}.clock{font-size:1.35rem;font-weight:900;color:var(--lime);font-variant-numeric:tabular-nums}.nav{display:flex;gap:8px;overflow:auto;padding:2px 0 15px}.nav button{white-space:nowrap;background:var(--panel);color:var(--muted);border:1px solid var(--line);border-radius:99px;padding:9px 12px}.nav button.active{background:var(--lime);color:#11180a;border-color:var(--lime);font-weight:850}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-bottom:14px}.stat,.panel{background:linear-gradient(145deg,var(--panel),#121712);border:1px solid var(--line);border-radius:16px;padding:15px}.num{font-size:1.5rem;font-weight:950}.num small{font-size:.8rem;color:var(--lime)}.label{font-size:.72rem;color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.stack{display:grid;gap:9px}.section{display:none}.section.active{display:block}.panel h2{font-size:1.08rem;margin:0}.panel h3{font-size:.92rem;margin:14px 0 7px}.row{display:flex;gap:9px;flex-wrap:wrap}.row>*{flex:1;min-width:0}.field{display:grid;gap:5px;color:var(--muted);font-size:.8rem;margin-bottom:10px}.field input,.field select,.field textarea{width:100%;min-width:0;background:#0c120c;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:10px 11px}.btn{background:var(--lime);color:#10160a;border:0;border-radius:10px;padding:10px 13px;font-weight:850}.btn.alt{background:var(--panel2);color:var(--text);border:1px solid var(--line)}.btn.danger{background:#45221e;color:#ffd5cf;border:1px solid #75413c}.list{display:grid;gap:8px}.item{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#101610;border:1px solid var(--line);border-radius:11px;padding:10px}.item strong{display:block}.item small{display:block;color:var(--muted)}.pill{background:#2a371f;color:var(--lime);font-size:.7rem;border-radius:99px;padding:4px 8px}.empty{border:1px dashed var(--line);border-radius:10px;padding:13px;text-align:center;color:var(--muted);font-size:.83rem}.result{background:#202b1b;border:1px solid #4b6135;border-radius:12px;padding:12px;margin-top:10px}.result strong{color:var(--lime)}.bar{height:8px;background:#303a2e;border-radius:99px;overflow:hidden;margin:10px 0}.bar span{display:block;height:100%;background:var(--lime);width:0}.timer{font-size:clamp(2.7rem,9vw,4.1rem);font-weight:950;text-align:center;font-variant-numeric:tabular-nums;margin:15px 0}.timerbuttons{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}.timerbuttons button{min-width:80px}.notice{font-size:.77rem;color:var(--muted);margin-top:10px}.chips{display:flex;gap:6px;flex-wrap:wrap}.chips span{background:#29361f;color:var(--lime);padding:5px 9px;border-radius:99px;font-size:.75rem}.foot{text-align:center;color:var(--muted);font-size:.75rem;padding:25px 0}.toast{display:none;position:fixed;bottom:15px;left:50%;transform:translateX(-50%);background:var(--lime);color:#10160a;font-weight:850;padding:11px 15px;border-radius:12px;z-index:9;max-width:90%}
+@media(max-width:720px){.grid{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.panel{padding:13px}.hero{padding-top:14px}}
+</style></head>
 <body>
-<header><div class="brand">BEAST <span>MODE</span> ⚡</div><div class="tag">YOUR PERSONAL FITNESS HQ</div></header>
+<header><div class="brand">BEAST <span>MODE</span> ⚡</div><div class="tag">ALL-IN-ONE FITNESS</div></header>
 <main>
-<section class="hero">
-<div class="eyebrow">Consistency beats motivation</div>
-<h1>BUILD YOUR<br><em>BEAST MODE.</em></h1>
-<p>Train with purpose. Track every run. Recover like a pro. One day at a time.</p>
-</section>
-<section class="stats">
-<div class="stat"><div class="num" id="statStreak">0 <small>days</small></div><div class="label">CURRENT STREAK</div></div>
-<div class="stat"><div class="num" id="statRuns">0</div><div class="label">RUNS LOGGED</div></div>
-<div class="stat"><div class="num" id="statKm">0.0 <small>km</small></div><div class="label">TOTAL DISTANCE</div></div>
-</section>
-<div class="layout">
-<div class="stack">
-<section class="panel">
-<h2>⚡ Today's Challenges</h2><p class="sub" id="todayLabel">Small wins build big results.</p>
-<div id="challengeList"></div>
-<div class="bar"><span id="challengeBar"></span></div><div class="muted" id="challengeProgress">0 of 5 completed</div>
-</section>
-<section class="panel">
-<h2>🏃 Log a Run</h2><p class="sub">Record your distance and time to see your pace.</p>
-<form id="runForm">
-<div class="two">
-<label class="field">Distance (km)<input type="number" id="distance" min="0.1" max="300" step="0.1" placeholder="e.g. 3.0" required></label>
-<label class="field">Time (minutes)<input type="number" id="minutes" min="1" max="999" step="1" placeholder="e.g. 18" required></label>
-</div>
-<label class="field">Run type<select id="runType"><option>Easy run</option><option>Intervals</option><option>Tempo run</option><option>Treadmill</option><option>Long run</option><option>Walk</option></select></label>
-<button class="btn" type="submit">+ Save Run</button>
-</form>
-</section>
-<section class="panel">
-<h2>📈 Running Records</h2><p class="sub">Your recent sessions on this device.</p><div id="runRecords" class="records"></div>
-</section>
-</div>
-<div class="stack">
-<section class="panel">
-<h2>🛌 Recovery Check-in</h2><p class="sub">Training works best when recovery is part of the plan.</p>
-<form id="recoveryForm">
-<div class="two">
-<label class="field">Sleep (hours)<input id="sleep" type="number" min="0" max="24" step=".5" placeholder="e.g. 8" required></label>
-<label class="field">Energy<select id="energy"><option>Good</option><option>Okay</option><option>Low</option></select></label>
-</div>
-<label class="field">Recovery / notes<textarea id="notes" rows="2" maxlength="250" placeholder="Rest day, soreness, hydration..."></textarea></label>
-<button class="btn" type="submit">Save Check-in</button>
-</form>
-<div style="margin-top:12px" id="recoveryRecords" class="records"></div>
-</section>
-<section class="panel">
-<h2>🎯 Weekly Consistency</h2><p class="sub">Challenge completion over the last 7 days.</p>
-<div class="bar"><span id="weekBar"></span></div><div class="muted" id="weekText">Keep showing up.</div>
-</section>
-<section class="panel">
-<h2>🔒 Your Data</h2><p class="sub">This version saves data only in this browser on this device. Clearing browser data may erase it.</p>
-<div class="stack" style="grid-template-columns:1fr 1fr">
-<button class="btn secondary" id="exportBtn" type="button">Export backup</button>
-<button class="btn secondary" id="resetBtn" type="button">Reset data</button>
-</div>
-<input type="file" id="importFile" accept="application/json,.json" hidden>
-<button class="btn secondary" id="importBtn" type="button" style="width:100%;margin-top:9px">Import backup</button>
-</section>
-</div>
-</div>
-<p class="foot">BEAST MODE • Version 1.0 • Train smart, stay consistent, recover well.</p>
-</main>
-<div class="toast" id="toast" role="status"></div>
+<section class="hero"><div class="eyebrow">Plan • Train • Fuel • Recover</div><h1>YOUR BODY.<br><span>YOUR BEAST MODE.</span></h1><div class="muted">Nutrition • BMI • cardio • home & gym workouts • diet • sleep • stopwatch • daily schedule</div></section>
+<div class="clockbar"><div><div class="label">LIVE LOCAL TIME</div><div class="clock" id="clock">--:--:--</div><div class="muted" id="todayDate"></div></div><div><div class="label">TODAY'S HABITS</div><strong id="habitSummary">0 / 5 completed</strong></div></div>
+<nav class="nav">
+<button class="active" data-tab="home">🏠 Overview</button><button data-tab="nutrition">🧮 BMI & Nutrition</button><button data-tab="diet">🥗 Diet planner</button><button data-tab="cardio">🏃 Cardio</button><button data-tab="workouts">💪 Home & Gym</button><button data-tab="running">📈 Running log</button><button data-tab="timers">⏱ Timers</button><button data-tab="sleep">🌙 Sleep</button><button data-tab="schedule">🗓 Schedule</button>
+</nav>
+<section id="home" class="section active">
+<div class="stats"><div class="stat"><div class="num" id="totalKm">0.0 <small>km</small></div><div class="label">TOTAL RUN DISTANCE</div></div><div class="stat"><div class="num" id="runCount">0</div><div class="label">RUNS LOGGED</div></div><div class="stat"><div class="num" id="waterToday">0 <small>ml</small></div><div class="label">WATER TODAY</div></div><div class="stat"><div class="num" id="sleepLatest">—</div><div class="label">LAST SLEEP</div></div></div>
+<div class="grid"><div class="panel"><h2>⚡ Daily habits</h2><p class="sub">Small, repeatable actions matter.</p><div id="habits" class="list"></div><div class="bar"><span id="habitBar"></span></div><div id="habitCount" class="muted"></div></div>
+<div class="panel"><h2>🚀 Quick actions</h2><div class="stack"><button class="btn" data-go="nutrition">Calculate BMI & nutrition</button><button class="btn alt" data-go="cardio">Build cardio session</button><button class="btn alt" data-go="workouts">Find home/gym exercises</button><button class="btn alt" data-go="diet">Plan meals</button></div><p class="notice">Records save in this browser on this device. Use backup to move them elsewhere.</p></div>
+<div class="panel"><h2>📈 Recent activity</h2><div id="recent" class="list"></div></div><div class="panel"><h2>🎯 Current profile</h2><div id="profileSummary" class="muted">Open BMI & Nutrition to calculate estimates.</div></div></div></section>
+
+<section id="nutrition" class="section"><div class="grid"><div class="panel"><h2>🧮 BMI & daily nutrition estimator</h2><p class="sub">Fill your details to estimate BMI and energy needs.</p>
+<form id="profileForm"><div class="row"><label class="field">Age<input id="age" type="number" min="13" max="100" value="18" required></label><label class="field">Sex for equation<select id="sex"><option value="male">Male</option><option value="female">Female</option><option value="other">Other / prefer not to say</option></select></label></div>
+<div class="row"><label class="field">Height (cm)<input id="height" type="number" min="100" max="240" value="166" required></label><label class="field">Weight (kg)<input id="weight" type="number" min="25" max="350" step=".1" value="76" required></label></div>
+<label class="field">Activity level<select id="activity"><option value="1.2">Mostly sitting / light activity</option><option value="1.375">Light exercise 1–3 days/week</option><option value="1.55" selected>Moderate exercise 3–5 days/week</option><option value="1.725">Hard exercise 6–7 days/week</option><option value="1.9">Very high activity / physical job</option></select></label>
+<label class="field">Main goal<select id="goal"><option value="maintain">Maintain fitness</option><option value="fat">Gradual fat loss</option><option value="muscle">Muscle gain / strength</option><option value="performance">Running performance</option></select></label><button class="btn">Calculate</button></form><div id="nutritionResult" class="result">Enter your details and calculate.</div>
+<p class="notice">If you are under 18, adult BMI categories and calorie formulas may not apply because growth changes needs. Ask a qualified clinician or dietitian for age-appropriate guidance. Avoid crash diets.</p></div>
+<div class="panel"><h2>🥑 Nutrition basics</h2><div class="chips"><span>Protein</span><span>Carbs</span><span>Healthy fats</span><span>Fiber</span><span>Fruit & vegetables</span></div><h3>How to use estimates</h3><p class="muted">Calories are approximate, not a prescription. Choose varied meals, eat enough to support training and recovery, and adjust based on energy, performance and professional advice where needed. BMI is only a screening tool and cannot tell fat from muscle.</p><h3>Saved profile</h3><div id="savedNutrition" class="muted">No calculation saved yet.</div></div></div></section>
+
+<section id="diet" class="section"><div class="grid"><div class="panel"><h2>🥗 Flexible diet planner</h2><p class="sub">Generate balanced meal ideas based on your goal and food preference.</p>
+<label class="field">Food preference<select id="foodPref"><option value="veg">Vegetarian</option><option value="egg">Vegetarian + eggs</option><option value="mixed">Includes meat/fish</option></select></label><label class="field">Goal<select id="dietGoal"><option value="balanced">Balanced fitness</option><option value="fat">Gradual fat loss</option><option value="muscle">Muscle gain & recovery</option><option value="run">Running performance</option></select></label><button class="btn" id="generateDiet">Generate meal ideas</button><div id="dietPlan" class="list" style="margin-top:12px"></div>
+<hr style="border-color:var(--line);margin:18px 0"><h2>🍽️ Food log</h2><form id="mealForm"><label class="field">Meal type<select id="mealType"><option>Breakfast</option><option>Lunch</option><option>Snack</option><option>Dinner</option><option>Post-workout</option></select></label><label class="field">Food / meal<input id="mealName" maxlength="120" placeholder="e.g. dal, roti, curd" required></label><div class="row"><label class="field">Calories (kcal)<input id="mealCalories" type="number" min="0" max="10000" placeholder="optional"></label><label class="field">Protein (g)<input id="mealProtein" type="number" min="0" max="500" step=".1" placeholder="optional"></label></div><button class="btn">Save meal</button></form><div class="stats" style="grid-template-columns:repeat(2,1fr);margin-top:12px"><div class="stat"><div class="num" id="caloriesToday">0</div><div class="label">EST. KCAL LOGGED TODAY</div></div><div class="stat"><div class="num" id="proteinToday">0 <small>g</small></div><div class="label">EST. PROTEIN LOGGED</div></div></div><div id="meals" class="list"></div></div>
+<div class="panel"><h2>💧 Water tracker</h2><p class="sub">Record water throughout the day.</p><div class="row"><button class="btn" data-water="250">+250 ml</button><button class="btn alt" data-water="500">+500 ml</button></div><label class="field" style="margin-top:12px">Custom amount (ml)<input id="customWater" type="number" min="1" max="3000" value="300"></label><button class="btn alt" id="addWater">Add water</button><div class="bar"><span id="waterBar"></span></div><div id="waterProgress" class="muted"></div><p class="notice">Fluid needs vary with activity, climate and health. Follow clinician advice if you have fluid restrictions.</p></div></div></section>
+
+<section id="cardio" class="section"><div class="grid"><div class="panel"><h2>🏃 Cardio session builder</h2><p class="sub">A general session template you can scale to your current ability.</p><label class="field">Activity<select id="cardioType"><option value="walk">Brisk walking</option><option value="run">Running / treadmill</option><option value="cycle">Cycling</option><option value="rope">Jump rope</option><option value="elliptical">Elliptical</option><option value="swim">Swimming</option><option value="interval">Low-impact intervals</option></select></label><label class="field">Level<select id="cardioLevel"><option value="beginner">Beginner / returning</option><option value="regular">Regular exerciser</option><option value="advanced">Experienced</option></select></label><label class="field">Time available<select id="cardioTime"><option value="15">15 min</option><option value="20">20 min</option><option value="30" selected>30 min</option><option value="45">45 min</option><option value="60">60 min</option></select></label><button class="btn" id="buildCardio">Build session</button><div id="cardioResult" class="result">Choose options above.</div><p class="notice">Warm up and cool down. Not every session should be hard. Stop for chest pain, faintness or unusual shortness of breath.</p></div>
+<div class="panel"><h2>📝 Cardio log</h2><form id="cardioForm"><div class="row"><label class="field">Minutes<input id="cardioMinutes" type="number" min="1" max="300" value="25" required></label><label class="field">Effort<select id="cardioEffort"><option>Easy</option><option>Moderate</option><option>Hard</option></select></label></div><label class="field">Activity / notes<input id="cardioNotes" placeholder="e.g. treadmill walk"></label><button class="btn">Save cardio session</button></form><div id="cardioHistory" class="list" style="margin-top:12px"></div><h3>Intensity guide</h3><p class="muted">Easy: can talk in full sentences. Moderate: can talk but not sing. Hard intervals should be limited and balanced with easy days.</p></div></div></section>
+
+<section id="workouts" class="section"><div class="grid"><div class="panel"><h2>💪 Home & gym exercise finder</h2><p class="sub">Exercise ideas by equipment and body part.</p><label class="field">Location<select id="location"><option value="home">Home / bodyweight</option><option value="gym">Gym / weights & machines</option></select></label><label class="field">Body part<select id="bodyPart"><option>Full body</option><option>Chest</option><option>Back</option><option>Shoulders</option><option>Biceps</option><option>Triceps</option><option>Forearms</option><option>Core / abs</option><option>Legs / quads</option><option>Hamstrings / glutes</option><option>Calves</option><option>Mobility / stretching</option></select></label><button class="btn" id="findExercises">Show exercises</button><div id="exerciseList" class="list" style="margin-top:12px"></div><p class="notice">Start with comfortable variations, controlled technique and gradual progression.</p></div>
+<div class="panel"><h2>📒 Workout log</h2><form id="workoutForm"><label class="field">Body part<select id="logPart"><option>Full body</option><option>Chest</option><option>Back</option><option>Shoulders</option><option>Biceps</option><option>Triceps</option><option>Forearms</option><option>Core / abs</option><option>Legs / quads</option><option>Hamstrings / glutes</option><option>Calves</option><option>Mobility / stretching</option></select></label><label class="field">Exercise<input id="exercise" maxlength="80" required placeholder="e.g. push-ups, squat, row"></label><div class="row"><label class="field">Sets<input id="sets" type="number" min="1" max="30" value="3" required></label><label class="field">Reps<input id="reps" type="number" min="1" max="300" value="10" required></label><label class="field">Weight kg<input id="weight" type="number" min="0" max="1000" step=".5" value="0"></label></div><button class="btn">Save workout</button></form><h3>Workout history</h3><div id="workoutHistory" class="list"></div></div></div></section>
+
+<section id="running" class="section"><div class="grid"><div class="panel"><h2>📈 Running log</h2><form id="runForm"><div class="row"><label class="field">Distance (km)<input id="runDistance" type="number" min=".01" max="300" step=".01" required></label><label class="field">Duration (minutes)<input id="runMinutes" type="number" min=".1" max="999" step=".1" required></label></div><label class="field">Type<select id="runType"><option>Easy run</option><option>Treadmill</option><option>Intervals</option><option>Tempo run</option><option>Long run</option><option>Walk</option></select></label><button class="btn">Save run</button></form></div><div class="panel"><h2>Run history</h2><div id="runHistory" class="list"></div></div></div></section>
+
+<section id="timers" class="section"><div class="grid"><div class="panel"><h2>⏱ Stopwatch</h2><div class="timer" id="stopwatch">00:00.00</div><div class="timerbuttons"><button class="btn" id="swToggle">Start</button><button class="btn alt" id="lapBtn">Lap</button><button class="btn alt" id="swReset">Reset</button></div><div id="laps" class="list" style="margin-top:12px"></div></div><div class="panel"><h2>⏲️ Countdown / rest timer</h2><div class="row"><label class="field">Minutes<input id="timerMin" type="number" min="0" max="180" value="1"></label><label class="field">Seconds<input id="timerSec" type="number" min="0" max="59" value="0"></label></div><div class="timer" id="countdown">01:00</div><div class="timerbuttons"><button class="btn" id="timerStart">Start</button><button class="btn alt" id="timerPause">Pause</button><button class="btn alt" id="timerReset">Reset</button></div><div id="timerStatus" class="notice">Ready.</div></div></div></section>
+
+<section id="sleep" class="section"><div class="grid"><div class="panel"><h2>🌙 Sleep tracker</h2><form id="sleepForm"><div class="row"><label class="field">Bedtime<input id="bed" type="time" value="22:00" required></label><label class="field">Wake time<input id="wake" type="time" value="06:00" required></label></div><label class="field">Sleep quality<select id="sleepQuality"><option>Good</option><option>Okay</option><option>Poor</option></select></label><label class="field">Notes<input id="sleepNotes" maxlength="150"></label><button class="btn">Save sleep</button></form><p class="notice">Teenagers generally need 8–10 hours; adults commonly need 7–9. Individual needs vary.</p></div><div class="panel"><h2>Sleep history</h2><div id="sleepHistory" class="list"></div></div></div></section>
+
+<section id="schedule" class="section"><div class="grid"><div class="panel"><h2>🗓 Daily schedule</h2><form id="scheduleForm"><div class="row"><label class="field">Time<input id="eventTime" type="time" value="06:00" required></label><label class="field">Category<select id="eventCategory"><option>Running</option><option>Workout</option><option>Meal</option><option>Study / work</option><option>Recovery</option><option>Sleep</option><option>Other</option></select></label></div><label class="field">Activity<input id="eventName" maxlength="100" required placeholder="e.g. Morning run"></label><button class="btn">Add schedule item</button></form></div><div class="panel"><h2>Today's plan</h2><div id="scheduleItems" class="list"></div></div></div></section>
+
+<section class="panel" style="margin-top:14px"><h2>🔐 Backup & privacy</h2><p class="sub">This version saves data in this browser on this device. It does not sync automatically across devices.</p><div class="row"><button class="btn alt" id="exportBtn">Export backup</button><button class="btn alt" id="importBtn">Import backup</button><button class="btn danger" id="clearBtn">Clear data</button></div><input type="file" id="backupFile" accept=".json,application/json" hidden></section>
+<footer class="foot">BEAST MODE • VERSION 3 • Train smart. Recover well.</footer>
+</main><div id="toast" class="toast" role="status"></div>
 <script>
-(() => {
-const KEY='beastModeFitnessV1';
-const baseChallenges=[
- {id:'move',title:'Move your body',detail:'Choose a run, walk or active session.'},
- {id:'strength',title:'Strength session',detail:'Train with good form; scale to your level.'},
- {id:'water',title:'Hydration check',detail:'Drink regularly throughout the day.'},
- {id:'fuel',title:'Balanced meals',detail:'Include protein, carbs, fruit or vegetables.'},
- {id:'recover',title:'Recovery first',detail:'Take breaks and aim for enough sleep.'}
-];
-const today=()=>new Date().toLocaleDateString('en-CA');
-const safeDefault=()=>({challenges:{},runs:[],recoveries:[]});
-let data;
-try { data=JSON.parse(localStorage.getItem(KEY))||safeDefault(); } catch { data=safeDefault(); }
-function save(){localStorage.setItem(KEY,JSON.stringify(data));render();}
-function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.style.display='block';clearTimeout(toast.timer);toast.timer=setTimeout(()=>el.style.display='none',2300);}
-function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
-function dayChecks(day){return data.challenges[day]||{};}
-function renderChallenges(){
- const checks=dayChecks(today());
- document.getElementById('todayLabel').textContent=new Date().toLocaleDateString(undefined,{weekday:'long',month:'long',day:'numeric'});
- document.getElementById('challengeList').innerHTML=baseChallenges.map(c=>`<div class="challenge ${checks[c.id]?'done':''}"><input type="checkbox" id="c-${c.id}" data-id="${c.id}" ${checks[c.id]?'checked':''}><label for="c-${c.id}">${c.title}<small>${c.detail}</small></label><span class="pill">${checks[c.id]?'DONE':'TODAY'}</span></div>`).join('');
- const count=baseChallenges.filter(c=>checks[c.id]).length;
- document.getElementById('challengeBar').style.width=(count/baseChallenges.length*100)+'%';
- document.getElementById('challengeProgress').textContent=`${count} of ${baseChallenges.length} completed`;
- document.querySelectorAll('#challengeList input').forEach(input=>input.addEventListener('change',e=>{
-  const d=dayChecks(today());d[e.target.dataset.id]=e.target.checked;data.challenges[today()]=d;save();toast(e.target.checked?'Challenge checked off!':'Challenge updated');
- }));
+(()=>{
+const KEY='beastModeCompleteV3';
+const defaults=()=>({runs:[],cardio:[],workouts:[],meals:[],water:[],sleeps:[],schedule:[],habits:{},profile:null});
+let data;try{data=JSON.parse(localStorage.getItem(KEY))||defaults()}catch{data=defaults()}
+const $=id=>document.getElementById(id),today=()=>{let d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`},dateText=()=>new Date().toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'}),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function toast(s){$('toast').textContent=s;$('toast').style.display='block';clearTimeout(toast.t);toast.t=setTimeout(()=>$('toast').style.display='none',2200)}
+function save(){localStorage.setItem(KEY,JSON.stringify(data));render()}
+function empty(s){return `<div class="empty">${s}</div>`}
+function list(a,fn){return a.length?a.slice(0,25).map(fn).join(''):empty('No records yet.')}
+function clock(){ $('clock').textContent=new Date().toLocaleTimeString([], {hour12:false});$('todayDate').textContent=new Date().toLocaleDateString(undefined,{weekday:'long',month:'long',day:'numeric'})}
+clock();setInterval(clock,1000);
+function go(id){document.querySelectorAll('.section').forEach(s=>s.classList.toggle('active',s.id===id));document.querySelectorAll('[data-tab]').forEach(b=>b.classList.toggle('active',b.dataset.tab===id));window.scrollTo({top:0,behavior:'smooth'})}
+document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>go(b.dataset.tab));document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>go(b.dataset.go));
+const habitDefs=[['run','Run or walk'],['strength','Strength / mobility'],['food','Balanced meals'],['water','Hydration'],['recover','Recovery / sleep']];
+function renderHome(){
+$('totalKm').innerHTML=data.runs.reduce((s,r)=>s+Number(r.km),0).toFixed(1)+' <small>km</small>';$('runCount').textContent=data.runs.length;
+$('waterToday').innerHTML=data.water.filter(x=>x.day===today()).reduce((s,x)=>s+x.ml,0)+' <small>ml</small>';$('sleepLatest').textContent=data.sleeps[0]?data.sleeps[0].hours+' h':'—';
+const h=data.habits[today()]||{};let n=habitDefs.filter(x=>h[x[0]]).length;$('habitSummary').textContent=`${n} / ${habitDefs.length} completed`;$('habitCount').textContent=$('habitSummary').textContent;$('habitBar').style.width=n/habitDefs.length*100+'%';
+$('habits').innerHTML=habitDefs.map(([id,label])=>`<label class="item"><span>${label}</span><input type="checkbox" data-habit="${id}" ${h[id]?'checked':''}></label>`).join('');
+document.querySelectorAll('[data-habit]').forEach(c=>c.onchange=()=>{data.habits[today()]={...(data.habits[today()]||{}),[c.dataset.habit]:c.checked};save()});
+$('profileSummary').textContent=data.profile?`${data.profile.goalLabel} · ${data.profile.weight} kg · ${data.profile.height} cm · BMI ${data.profile.bmi}`:'Open BMI & Nutrition to calculate estimates.';
+let r=[];if(data.runs[0])r.push({title:'🏃 Run',detail:`${data.runs[0].km} km · ${data.runs[0].minutes} min`});if(data.workouts[0])r.push({title:'💪 Workout',detail:data.workouts[0].exercise});if(data.meals[0])r.push({title:'🥗 Meal',detail:data.meals[0].name});$('recent').innerHTML=r.length?r.map(x=>`<div class="item"><div><strong>${x.title}</strong><small>${esc(x.detail)}</small></div></div>`).join(''):empty('Your latest activity appears here.')
 }
-function streak(){
- let n=0;let d=new Date();
- // Count from today; if today's not started, allow streak to continue from yesterday.
- if(!data.challenges[today()] || !Object.values(data.challenges[today()]).some(Boolean)) d.setDate(d.getDate()-1);
- for(let i=0;i<400;i++){const key=d.toLocaleDateString('en-CA');const c=data.challenges[key]||{};if(!baseChallenges.some(x=>c[x.id]))break;n++;d.setDate(d.getDate()-1);}
- return n;
-}
-function renderRuns(){
- document.getElementById('runRecords').innerHTML=data.runs.length?data.runs.slice(0,6).map(r=>`<div class="record"><div><strong>${escapeHtml(r.distance)} km · ${escapeHtml(r.type)}</strong><small>${escapeHtml(r.date)}</small></div><div style="text-align:right"><strong>${escapeHtml(r.minutes)} min</strong><small>${(Number(r.minutes)/Number(r.distance)).toFixed(2)} min/km</small></div></div>`).join(''):'<div class="empty">No runs logged yet. Add your first session above.</div>';
-}
-function renderRecovery(){
- document.getElementById('recoveryRecords').innerHTML=data.recoveries.length?data.recoveries.slice(0,3).map(r=>`<div class="record"><div><strong>${escapeHtml(r.sleep)} h sleep · ${escapeHtml(r.energy)}</strong><small>${escapeHtml(r.date)}</small>${r.notes?`<small style="display:block">${escapeHtml(r.notes)}</small>`:''}</div></div>`).join(''):'<div class="empty">No recovery check-ins yet.</div>';
-}
-function renderWeek(){
- let total=0,possible=35;for(let i=0;i<7;i++){const d=new Date();d.setDate(d.getDate()-i);const k=d.toLocaleDateString('en-CA');total+=baseChallenges.filter(c=>(data.challenges[k]||{})[c.id]).length;}
- document.getElementById('weekBar').style.width=(total/possible*100)+'%';
- document.getElementById('weekText').textContent=`${total} of ${possible} possible challenge check-offs in the last 7 days.`;
-}
+$('profileForm').onsubmit=e=>{e.preventDefault();let age=+$('age').value,h=+$('height').value,w=+$('weight').value,sex=$('sex').value,act=+$('activity').value,goal=$('goal').value;if(!age||!h||!w)return toast('Enter valid details');let bmi=w/((h/100)**2),bmr=10*w+6.25*h-5*age+(sex==='male'?5:sex==='female'?-161:-78),tdee=Math.round(bmr*act);let gl={maintain:'Maintain fitness',fat:'Gradual fat loss',muscle:'Muscle gain / strength',performance:'Running performance'}[goal];data.profile={age,height:h,weight:w,sex,activity:act,goal,goalLabel:gl,bmi:bmi.toFixed(1),bmr:Math.round(bmr),tdee};let note=age<18?'Because you are under 18, adult BMI categories and calorie estimates may not fit your growth needs. Ask a qualified clinician/dietitian for age-appropriate guidance; avoid intentional aggressive restriction.':`BMI is a screening number only and cannot distinguish fat from muscle.`;
+let goalNote=goal==='fat'?'Focus on sustainable habits; avoid crash diets.':goal==='muscle'?'Pair progressive strength training with regular balanced meals and enough recovery.':goal==='performance'?'Fuel training with adequate carbohydrates, protein and fluids.':'Build consistency with balanced meals and enjoyable activity.';
+$('nutritionResult').innerHTML=`<div><strong>BMI: ${bmi.toFixed(1)}</strong> <span class="muted">· screening estimate</span></div><div style="margin-top:7px">Estimated resting energy: <strong>${Math.round(bmr)} kcal/day</strong></div><div>Estimated maintenance energy: <strong>${tdee} kcal/day</strong></div><div style="margin-top:7px">${goalNote}</div><p class="notice">${note}</p>`;
+$('savedNutrition').textContent=`${gl} · BMI ${bmi.toFixed(1)} · estimated maintenance ${tdee} kcal/day.`;renderHome();toast('Estimates calculated; use with care.')};
+const mealIdeas={
+veg:{balanced:[['Breakfast','Oats with milk/curd and fruit'],['Lunch','Roti or rice, dal/beans, vegetables and curd'],['Snack','Fruit plus roasted chana or nuts'],['Dinner','Dal/soy/tofu/paneer, vegetables and roti/rice']],fat:[['Breakfast','Oats or besan chilla with curd and fruit'],['Lunch','Dal, plenty of vegetables, roti/rice and curd'],['Snack','Fruit or roasted chana'],['Dinner','Beans/soy/tofu with vegetables and roti']],muscle:[['Breakfast','Oats with milk, nuts and banana'],['Lunch','Rice/roti, dal, soy/tofu/paneer and vegetables'],['Snack','Milk/curd smoothie and fruit'],['Dinner','Dal/beans, rice/roti, vegetables and curd']],run:[['Before run','Banana or toast if hungry'],['Breakfast','Oats with milk and fruit'],['Lunch','Rice/roti, dal, vegetables and curd'],['After training','Milk/curd or soy plus fruit'] ]},
+egg:{balanced:[['Breakfast','Eggs, toast/roti and fruit'],['Lunch','Dal, vegetables, roti/rice and curd'],['Snack','Fruit and nuts'],['Dinner','Egg bhurji, vegetables and roti']],fat:[['Breakfast','Eggs with vegetables and roti'],['Lunch','Dal, vegetables and roti/rice'],['Snack','Fruit or curd'],['Dinner','Eggs or soy with vegetables']],muscle:[['Breakfast','Eggs, oats and milk'],['Lunch','Dal, eggs/soy and rice/roti'],['Snack','Curd, banana and nuts'],['Dinner','Eggs, vegetables and roti/rice']],run:[['Before run','Banana/toast if hungry'],['Breakfast','Eggs, oats and fruit'],['Lunch','Rice/roti, dal and vegetables'],['Recovery','Eggs or milk/curd with fruit']]},
+mixed:{balanced:[['Breakfast','Eggs or curd, toast/roti and fruit'],['Lunch','Rice/roti, chicken/fish or dal, vegetables'],['Snack','Fruit and nuts'],['Dinner','Protein food, vegetables and roti/rice']],fat:[['Breakfast','Eggs/curd with vegetables'],['Lunch','Chicken/fish or dal, vegetables and roti/rice'],['Snack','Fruit or curd'],['Dinner','Protein food, vegetables and roti']],muscle:[['Breakfast','Eggs, oats and milk'],['Lunch','Chicken/fish or dal, rice and vegetables'],['Snack','Curd/milk, banana and nuts'],['Dinner','Protein food, rice/roti and vegetables']],run:[['Before run','Banana or toast if hungry'],['Breakfast','Oats, milk and fruit'],['Lunch','Rice/roti, protein food and vegetables'],['Recovery','Eggs/chicken/fish or dal with carbs']]}
+};
+$('generateDiet').onclick=()=>{let pref=$('foodPref').value,goal=$('dietGoal').value;let a=mealIdeas[pref][goal]||mealIdeas[pref].balanced;$('dietPlan').innerHTML=a.map(x=>`<div class="item"><div><strong>${esc(x[0])}</strong><small>${esc(x[1])}</small></div></div>`).join('');};
+$('mealForm').onsubmit=e=>{e.preventDefault();data.meals.unshift({type:$('mealType').value,name:$('mealName').value.trim(),cal:Number($('mealCalories').value)||0,protein:Number($('mealProtein').value)||0,day:today(),date:dateText()});e.target.reset();save();toast('Meal saved')};
+function renderMeals(){let a=data.meals.filter(x=>x.day===today());$('meals').innerHTML=list(a,m=>`<div class="item"><div><strong>${esc(m.type)} · ${esc(m.name)}</strong><small>${m.cal} kcal · ${m.protein} g protein</small></div></div>`);$('caloriesToday').textContent=a.reduce((s,x)=>s+x.cal,0);$('proteinToday').innerHTML=a.reduce((s,x)=>s+x.protein,0).toFixed(1)+' <small>g</small>';let w=data.water.filter(x=>x.day===today()).reduce((s,x)=>s+x.ml,0),goal=2500;$('waterBar').style.width=Math.min(100,w/goal*100)+'%';$('waterProgress').textContent=`${w} ml logged today (illustrative 2500 ml marker; personal needs vary).`}
+function addWater(ml){data.water.unshift({ml,day:today(),time:new Date().toLocaleTimeString()});save();toast('Water logged')}
+document.querySelectorAll('[data-water]').forEach(b=>b.onclick=()=>addWater(+b.dataset.water));$('addWater').onclick=()=>{let n=+$('customWater').value;if(n>0)addWater(n);else toast('Enter a valid amount')};
+const cardioNames={walk:'Brisk walking',run:'Running / treadmill',cycle:'Cycling',rope:'Jump rope',elliptical:'Elliptical',swim:'Swimming',interval:'Low-impact intervals'};
+$('buildCardio').onclick=()=>{let type=$('cardioType').value,level=$('cardioLevel').value,total=+$('cardioTime').value,warm=Math.max(3,Math.round(total*.17)),cool=Math.max(3,Math.round(total*.13)),main=total-warm-cool;let effort=level==='beginner'?'comfortable pace; you should be able to talk':level==='regular'?'mostly moderate effort with short controlled quicker periods':'mostly controlled effort; add intervals only if well-conditioned';let body=type==='interval'?'Alternate 30–60 seconds brisk movement with 60–90 seconds easy movement.':type==='rope'?'Use short, easy skipping rounds with walking recovery; substitute marching if impact bothers you.':type==='run'?'Jog or walk-jog at a conversational pace; use walk breaks as needed.':`Keep a steady, comfortable ${cardioNames[type].toLowerCase()} pace.`;$('cardioResult').innerHTML=`<strong>${total}-minute ${cardioNames[type]} session</strong><p><b>Warm-up · ${warm} min:</b> very easy movement, gradually increasing.</p><p><b>Main · ${main} min:</b> ${body} ${effort}.</p><p><b>Cool-down · ${cool} min:</b> slow down gradually and breathe easily.</p><p class="notice">Build duration gradually and include recovery days. Stop if you feel unwell.</p>`;$('cardioMinutes').value=total;$('cardioNotes').value=cardioNames[type]};
+$('cardioForm').onsubmit=e=>{e.preventDefault();data.cardio.unshift({minutes:+$('cardioMinutes').value,effort:$('cardioEffort').value,notes:$('cardioNotes').value||'Cardio',date:dateText()});save();toast('Cardio session saved')};
+const exerciseBank={
+home:{'Full body':['Chair squat','Wall or incline push-up','Glute bridge','Bird dog','March in place'],'Chest':['Wall push-up','Incline push-up','Knee push-up'],'Back':['Resistance-band row (if available)','Bird dog','Prone Y-T raises'],'Shoulders':['Wall slides','Pike push-up variation','Arm circles'],'Biceps':['Backpack curl (light, controlled)','Isometric towel curl'],'Triceps':['Wall close-grip push-up','Overhead light backpack extension'],'Forearms':['Wrist curls with light bottle','Grip towel squeeze'],'Core / abs':['Dead bug','Plank from knees','Bird dog'],'Legs / quads':['Chair squat','Supported split squat','Step-up on a stable low step'],'Hamstrings / glutes':['Glute bridge','Hip hinge practice','Supported single-leg bridge'],'Calves':['Calf raises holding support','Seated calf raises'],'Mobility / stretching':['Cat-cow','Hip flexor stretch','Ankle mobility']},
+gym:{'Full body':['Goblet squat','Chest press machine','Lat pulldown','Cable row','Dumbbell Romanian deadlift'],'Chest':['Machine chest press','Dumbbell bench press','Cable fly'],'Back':['Lat pulldown','Seated cable row','Chest-supported row'],'Shoulders':['Seated dumbbell press','Lateral raise','Face pull'],'Biceps':['Dumbbell curl','Cable curl','Hammer curl'],'Triceps':['Cable pushdown','Overhead cable extension','Close-grip machine press'],'Forearms':['Wrist curl','Reverse wrist curl','Farmer carry'],'Core / abs':['Cable Pallof press','Dead bug','Plank'],'Legs / quads':['Leg press','Goblet squat','Leg extension'],'Hamstrings / glutes':['Romanian deadlift','Leg curl machine','Hip thrust'],'Calves':['Standing calf raise','Seated calf raise'],'Mobility / stretching':['Hip mobility drills','Thoracic rotations','Ankle mobility']}}
+$('findExercises').onclick=()=>{let where=$('location').value,part=$('bodyPart').value,a=exerciseBank[where][part]||exerciseBank[where]['Full body'];$('exerciseList').innerHTML=a.map((x,i)=>`<div class="item"><div><strong>${i+1}. ${esc(x)}</strong><small>${where==='home'?'Home option':'Gym option'} · choose a comfortable variation</small></div><button class="btn alt" data-add-ex="${esc(x)}">Log</button></div>`).join('');document.querySelectorAll('[data-add-ex]').forEach(b=>b.onclick=()=>{$('exercise').value=b.dataset.addEx;$('logPart').value=part;go('workouts');$('exercise').focus()})};
+$('workoutForm').onsubmit=e=>{e.preventDefault();data.workouts.unshift({part:$('logPart').value,exercise:$('exercise').value.trim(),sets:+$('sets').value,reps:+$('reps').value,weight:+$('weight').value||0,date:dateText()});e.target.reset();$('sets').value=3;$('reps').value=10;$('weight').value=0;save();toast('Workout saved')};
+$('runForm').onsubmit=e=>{e.preventDefault();let km=+$('runDistance').value,min=+$('runMinutes').value;if(km<=0||min<=0)return toast('Enter valid distance and time');data.runs.unshift({km:km.toFixed(2),minutes:min.toFixed(1),type:$('runType').value,date:dateText()});e.target.reset();save();toast('Run saved')};
+$('sleepForm').onsubmit=e=>{e.preventDefault();let [bh,bm]=$('bed').value.split(':').map(Number),[wh,wm]=$('wake').value.split(':').map(Number),mins=wh*60+wm-(bh*60+bm);if(mins<=0)mins+=1440;data.sleeps.unshift({hours:(mins/60).toFixed(1),bed:$('bed').value,wake:$('wake').value,quality:$('sleepQuality').value,notes:$('sleepNotes').value,date:dateText()});save();toast('Sleep saved')};
+$('scheduleForm').onsubmit=e=>{e.preventDefault();data.schedule.push({time:$('eventTime').value,category:$('eventCategory').value,name:$('eventName').value.trim(),done:false,day:today()});e.target.reset();save();toast('Schedule item added')};
 function render(){
- renderChallenges();renderRuns();renderRecovery();renderWeek();
- document.getElementById('statRuns').textContent=data.runs.length;
- document.getElementById('statKm').innerHTML=data.runs.reduce((s,r)=>s+Number(r.distance),0).toFixed(1)+' <small>km</small>';
- document.getElementById('statStreak').innerHTML=streak()+' <small>days</small>';
+ renderHome();renderMeals();
+ $('runHistory').innerHTML=list(data.runs,r=>`<div class="item"><div><strong>${esc(r.km)} km · ${esc(r.type)}</strong><small>${esc(r.date)} · ${esc(r.minutes)} min · ${(Number(r.minutes)/Number(r.km)).toFixed(2)} min/km</small></div></div>`);
+ $('cardioHistory').innerHTML=list(data.cardio,c=>`<div class="item"><div><strong>${esc(c.notes)} · ${c.minutes} min</strong><small>${esc(c.date)} · ${esc(c.effort)}</small></div></div>`);
+ $('workoutHistory').innerHTML=list(data.workouts,w=>`<div class="item"><div><strong>${esc(w.exercise)} · ${esc(w.part)}</strong><small>${esc(w.date)} · ${w.sets} sets × ${w.reps} reps · ${w.weight} kg</small></div></div>`);
+ $('sleepHistory').innerHTML=list(data.sleeps,s=>`<div class="item"><div><strong>${s.hours} hours · ${esc(s.quality)}</strong><small>${esc(s.date)} · ${esc(s.bed)} → ${esc(s.wake)}</small></div></div>`);
+ let events=data.schedule.filter(x=>x.day===today()).sort((a,b)=>a.time.localeCompare(b.time));$('scheduleItems').innerHTML=events.length?events.map(x=>`<label class="item"><span><strong>${esc(x.time)} · ${esc(x.name)}</strong><small>${esc(x.category)}</small></span><input type="checkbox" data-event="${data.schedule.indexOf(x)}" ${x.done?'checked':''}></label>`).join(''):empty('No schedule items yet.');
+ document.querySelectorAll('[data-event]').forEach(c=>c.onchange=()=>{data.schedule[+c.dataset.event].done=c.checked;save()});
 }
-document.getElementById('runForm').addEventListener('submit',e=>{
- e.preventDefault();const distance=Number(document.getElementById('distance').value),minutes=Number(document.getElementById('minutes').value);
- if(!(distance>0&&minutes>0)){toast('Enter a valid distance and time.');return;}
- data.runs.unshift({distance:distance.toFixed(1),minutes:Math.round(minutes),type:document.getElementById('runType').value,date:new Date().toLocaleDateString()});
- data.runs=data.runs.slice(0,200);e.target.reset();save();toast('Run saved successfully!');
-});
-document.getElementById('recoveryForm').addEventListener('submit',e=>{
- e.preventDefault();data.recoveries.unshift({sleep:Number(document.getElementById('sleep').value),energy:document.getElementById('energy').value,notes:document.getElementById('notes').value.trim(),date:new Date().toLocaleDateString()});
- data.recoveries=data.recoveries.slice(0,100);e.target.reset();save();toast('Recovery check-in saved!');
-});
-document.getElementById('exportBtn').addEventListener('click',()=>{
- const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='beast-mode-backup.json';a.click();URL.revokeObjectURL(a.href);toast('Backup exported.');
-});
-document.getElementById('importBtn').addEventListener('click',()=>document.getElementById('importFile').click());
-document.getElementById('importFile').addEventListener('change',async e=>{
- const file=e.target.files[0];if(!file)return;try{const imported=JSON.parse(await file.text());if(!imported||!Array.isArray(imported.runs)||!Array.isArray(imported.recoveries)||typeof imported.challenges!=='object')throw Error();data=imported;save();toast('Backup imported!');}catch{toast('That backup file is not valid.');}e.target.value='';
-});
-document.getElementById('resetBtn').addEventListener('click',()=>{
- if(confirm('Delete all Beast Mode records stored in this browser? Export a backup first if you want to keep them.')){data=safeDefault();save();toast('All local records reset.');}
-});
-render();
+$('exportBtn').onclick=()=>{let a=document.createElement('a'),url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));a.href=url;a.download='beast-mode-backup.json';a.click();URL.revokeObjectURL(url);toast('Backup exported')};
+$('importBtn').onclick=()=>$('backupFile').click();$('backupFile').onchange=async e=>{try{let x=JSON.parse(await e.target.files[0].text());if(!Array.isArray(x.runs)||!Array.isArray(x.workouts))throw Error();data={...defaults(),...x};save();toast('Backup imported')}catch{toast('Invalid backup file')}e.target.value=''};
+$('clearBtn').onclick=()=>{if(confirm('Delete all saved data from this browser? Export a backup first if needed.')){data=defaults();save();toast('Data cleared')}};
+let swRunning=false,swStart=0,swElapsed=0,swInt=null,laps=[];function fmt(ms){let cs=Math.floor(ms/10)%100,s=Math.floor(ms/1000)%60,m=Math.floor(ms/60000);return `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}.${String(cs).padStart(2,'0')}`}function swTick(){$('stopwatch').textContent=fmt(swElapsed+(swRunning?performance.now()-swStart:0))}
+$('swToggle').onclick=()=>{if(swRunning){swElapsed+=performance.now()-swStart;swRunning=false;clearInterval(swInt);$('swToggle').textContent='Resume'}else{swStart=performance.now();swRunning=true;swInt=setInterval(swTick,30);$('swToggle').textContent='Pause'}swTick()};
+$('lapBtn').onclick=()=>{laps.unshift(fmt(swElapsed+(swRunning?performance.now()-swStart:0)));$('laps').innerHTML=laps.map((x,i)=>`<div class="item"><span>Lap ${laps.length-i}</span><strong>${x}</strong></div>`).join('')||empty('No laps yet.')};
+$('swReset').onclick=()=>{swRunning=false;clearInterval(swInt);swElapsed=0;laps=[];$('stopwatch').textContent='00:00.00';$('swToggle').textContent='Start';$('laps').innerHTML=''};
+let left=60,countInt=null;function readTimer(){return Math.max(0,+$('timerMin').value||0)*60+Math.max(0,Math.min(59,+$('timerSec').value||0))}function showTimer(){$('countdown').textContent=`${String(Math.floor(left/60)).padStart(2,'0')}:${String(left%60).padStart(2,'0')}`}
+$('timerStart').onclick=()=>{if(countInt)return;if(left<=0)left=readTimer();if(left<=0)return toast('Set a timer first');$('timerStatus').textContent='Timer running…';countInt=setInterval(()=>{left--;showTimer();if(left<=0){clearInterval(countInt);countInt=null;$('timerStatus').textContent='Time is up!';toast('Timer finished!');try{navigator.vibrate?.([200,100,200])}catch{}}},1000)};
+$('timerPause').onclick=()=>{clearInterval(countInt);countInt=null;$('timerStatus').textContent='Paused.'};$('timerReset').onclick=()=>{clearInterval(countInt);countInt=null;left=readTimer();showTimer();$('timerStatus').textContent='Ready.'};$('timerMin').onchange=$('timerSec').onchange=()=>{if(!countInt){left=readTimer();showTimer()}};
+render();showTimer();
 })();
-</script>
-</body>
-</html>
+</script></body></html>
