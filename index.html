@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#10130f">
+<title>Beast Mode | Fitness Tracker</title>
+<style>
+:root{--bg:#0d100d;--panel:#171c17;--panel2:#202720;--green:#b7ff3c;--muted:#9ba697;--text:#f4f7ef;--line:#303a2e;--red:#ff796f}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top right,#26351b 0,transparent 30%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.45}
+header{max-width:1050px;margin:auto;padding:22px 18px 10px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{font-weight:950;letter-spacing:1px;font-size:1.1rem}.brand span{color:var(--green)}.tag{font-size:.75rem;color:var(--green);border:1px solid #59772d;padding:5px 9px;border-radius:99px}
+main{max-width:1050px;margin:auto;padding:10px 18px 40px}.hero{padding:24px 0 20px}.eyebrow{color:var(--green);font-weight:800;text-transform:uppercase;letter-spacing:2px;font-size:.75rem}.hero h1{font-size:clamp(2.2rem,8vw,4.4rem);line-height:.98;letter-spacing:-2px;margin:12px 0}.hero h1 em{font-style:normal;color:var(--green)}.hero p{color:var(--muted);max-width:560px;margin:12px 0 0}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0 24px}.stat,.panel{background:linear-gradient(145deg,var(--panel),#131713);border:1px solid var(--line);border-radius:18px;padding:16px}.stat .num{font-size:1.65rem;font-weight:900;letter-spacing:-1px}.stat .label{font-size:.76rem;color:var(--muted);margin-top:3px}.stat .num small{font-size:.85rem;color:var(--green)}
+.layout{display:grid;grid-template-columns:1.15fr .85fr;gap:14px}.stack{display:grid;gap:14px}.panel h2{font-size:1.08rem;margin:0 0 5px}.sub{font-size:.82rem;color:var(--muted);margin:0 0 15px}.challenge{display:flex;align-items:center;gap:11px;padding:12px 0;border-top:1px solid var(--line)}.challenge:first-of-type{border-top:0}.challenge input[type=checkbox]{width:21px;height:21px;accent-color:var(--green);flex-shrink:0}.challenge label{flex:1;font-weight:650;font-size:.92rem}.challenge small{display:block;color:var(--muted);font-weight:400;font-size:.77rem}.done label{text-decoration:line-through;color:var(--muted)}.pill{font-size:.7rem;color:var(--green);background:#29351d;border-radius:99px;padding:4px 8px;white-space:nowrap}
+form{display:grid;gap:11px}label.field{display:grid;gap:5px;font-size:.82rem;color:var(--muted)}input,select,textarea{width:100%;background:#0e120e;border:1px solid var(--line);border-radius:10px;color:var(--text);padding:11px 12px;font:inherit;min-width:0}input:focus,select:focus,textarea:focus{outline:2px solid #7eae2c;border-color:transparent}.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}.btn{border:0;border-radius:11px;background:var(--green);color:#10150b;font-weight:900;padding:12px 14px;font:inherit;cursor:pointer}.btn.secondary{background:var(--panel2);color:var(--text);border:1px solid var(--line)}.btn:active{transform:scale(.99)}.bar{height:8px;background:#30382d;border-radius:20px;overflow:hidden;margin:12px 0 6px}.bar span{display:block;height:100%;background:var(--green);width:0;transition:width .2s}.muted{color:var(--muted);font-size:.8rem}.records{display:grid;gap:9px}.record{background:#101410;border:1px solid var(--line);padding:11px;border-radius:12px;display:flex;justify-content:space-between;gap:10px;font-size:.85rem}.record strong{display:block}.record small{color:var(--muted)}.empty{padding:14px;text-align:center;color:var(--muted);font-size:.85rem;border:1px dashed var(--line);border-radius:12px}.recovery-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.foot{color:var(--muted);font-size:.75rem;text-align:center;margin:24px 0 0}.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:var(--green);color:#10150b;padding:10px 15px;border-radius:12px;font-weight:800;box-shadow:0 8px 30px #0008;display:none;max-width:90%;z-index:5}
+@media(max-width:720px){.layout{grid-template-columns:1fr}.stats{gap:8px}.stat{padding:12px}.stat .num{font-size:1.4rem}.hero{padding-top:18px}.panel{padding:14px}header{padding-top:17px}}
+@media(max-width:370px){.stats{grid-template-columns:1fr}.two{grid-template-columns:1fr}.tag{font-size:.65rem}}
+</style>
+</head>
+<body>
+<header><div class="brand">BEAST <span>MODE</span> ⚡</div><div class="tag">YOUR PERSONAL FITNESS HQ</div></header>
+<main>
+<section class="hero">
+<div class="eyebrow">Consistency beats motivation</div>
+<h1>BUILD YOUR<br><em>BEAST MODE.</em></h1>
+<p>Train with purpose. Track every run. Recover like a pro. One day at a time.</p>
+</section>
+<section class="stats">
+<div class="stat"><div class="num" id="statStreak">0 <small>days</small></div><div class="label">CURRENT STREAK</div></div>
+<div class="stat"><div class="num" id="statRuns">0</div><div class="label">RUNS LOGGED</div></div>
+<div class="stat"><div class="num" id="statKm">0.0 <small>km</small></div><div class="label">TOTAL DISTANCE</div></div>
+</section>
+<div class="layout">
+<div class="stack">
+<section class="panel">
+<h2>⚡ Today's Challenges</h2><p class="sub" id="todayLabel">Small wins build big results.</p>
+<div id="challengeList"></div>
+<div class="bar"><span id="challengeBar"></span></div><div class="muted" id="challengeProgress">0 of 5 completed</div>
+</section>
+<section class="panel">
+<h2>🏃 Log a Run</h2><p class="sub">Record your distance and time to see your pace.</p>
+<form id="runForm">
+<div class="two">
+<label class="field">Distance (km)<input type="number" id="distance" min="0.1" max="300" step="0.1" placeholder="e.g. 3.0" required></label>
+<label class="field">Time (minutes)<input type="number" id="minutes" min="1" max="999" step="1" placeholder="e.g. 18" required></label>
+</div>
+<label class="field">Run type<select id="runType"><option>Easy run</option><option>Intervals</option><option>Tempo run</option><option>Treadmill</option><option>Long run</option><option>Walk</option></select></label>
+<button class="btn" type="submit">+ Save Run</button>
+</form>
+</section>
+<section class="panel">
+<h2>📈 Running Records</h2><p class="sub">Your recent sessions on this device.</p><div id="runRecords" class="records"></div>
+</section>
+</div>
+<div class="stack">
+<section class="panel">
+<h2>🛌 Recovery Check-in</h2><p class="sub">Training works best when recovery is part of the plan.</p>
+<form id="recoveryForm">
+<div class="two">
+<label class="field">Sleep (hours)<input id="sleep" type="number" min="0" max="24" step=".5" placeholder="e.g. 8" required></label>
+<label class="field">Energy<select id="energy"><option>Good</option><option>Okay</option><option>Low</option></select></label>
+</div>
+<label class="field">Recovery / notes<textarea id="notes" rows="2" maxlength="250" placeholder="Rest day, soreness, hydration..."></textarea></label>
+<button class="btn" type="submit">Save Check-in</button>
+</form>
+<div style="margin-top:12px" id="recoveryRecords" class="records"></div>
+</section>
+<section class="panel">
+<h2>🎯 Weekly Consistency</h2><p class="sub">Challenge completion over the last 7 days.</p>
+<div class="bar"><span id="weekBar"></span></div><div class="muted" id="weekText">Keep showing up.</div>
+</section>
+<section class="panel">
+<h2>🔒 Your Data</h2><p class="sub">This version saves data only in this browser on this device. Clearing browser data may erase it.</p>
+<div class="stack" style="grid-template-columns:1fr 1fr">
+<button class="btn secondary" id="exportBtn" type="button">Export backup</button>
+<button class="btn secondary" id="resetBtn" type="button">Reset data</button>
+</div>
+<input type="file" id="importFile" accept="application/json,.json" hidden>
+<button class="btn secondary" id="importBtn" type="button" style="width:100%;margin-top:9px">Import backup</button>
+</section>
+</div>
+</div>
+<p class="foot">BEAST MODE • Version 1.0 • Train smart, stay consistent, recover well.</p>
+</main>
+<div class="toast" id="toast" role="status"></div>
+<script>
+(() => {
+const KEY='beastModeFitnessV1';
+const baseChallenges=[
+ {id:'move',title:'Move your body',detail:'Choose a run, walk or active session.'},
+ {id:'strength',title:'Strength session',detail:'Train with good form; scale to your level.'},
+ {id:'water',title:'Hydration check',detail:'Drink regularly throughout the day.'},
+ {id:'fuel',title:'Balanced meals',detail:'Include protein, carbs, fruit or vegetables.'},
+ {id:'recover',title:'Recovery first',detail:'Take breaks and aim for enough sleep.'}
+];
+const today=()=>new Date().toLocaleDateString('en-CA');
+const safeDefault=()=>({challenges:{},runs:[],recoveries:[]});
+let data;
+try { data=JSON.parse(localStorage.getItem(KEY))||safeDefault(); } catch { data=safeDefault(); }
+function save(){localStorage.setItem(KEY,JSON.stringify(data));render();}
+function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.style.display='block';clearTimeout(toast.timer);toast.timer=setTimeout(()=>el.style.display='none',2300);}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function dayChecks(day){return data.challenges[day]||{};}
+function renderChallenges(){
+ const checks=dayChecks(today());
+ document.getElementById('todayLabel').textContent=new Date().toLocaleDateString(undefined,{weekday:'long',month:'long',day:'numeric'});
+ document.getElementById('challengeList').innerHTML=baseChallenges.map(c=>`<div class="challenge ${checks[c.id]?'done':''}"><input type="checkbox" id="c-${c.id}" data-id="${c.id}" ${checks[c.id]?'checked':''}><label for="c-${c.id}">${c.title}<small>${c.detail}</small></label><span class="pill">${checks[c.id]?'DONE':'TODAY'}</span></div>`).join('');
+ const count=baseChallenges.filter(c=>checks[c.id]).length;
+ document.getElementById('challengeBar').style.width=(count/baseChallenges.length*100)+'%';
+ document.getElementById('challengeProgress').textContent=`${count} of ${baseChallenges.length} completed`;
+ document.querySelectorAll('#challengeList input').forEach(input=>input.addEventListener('change',e=>{
+  const d=dayChecks(today());d[e.target.dataset.id]=e.target.checked;data.challenges[today()]=d;save();toast(e.target.checked?'Challenge checked off!':'Challenge updated');
+ }));
+}
+function streak(){
+ let n=0;let d=new Date();
+ // Count from today; if today's not started, allow streak to continue from yesterday.
+ if(!data.challenges[today()] || !Object.values(data.challenges[today()]).some(Boolean)) d.setDate(d.getDate()-1);
+ for(let i=0;i<400;i++){const key=d.toLocaleDateString('en-CA');const c=data.challenges[key]||{};if(!baseChallenges.some(x=>c[x.id]))break;n++;d.setDate(d.getDate()-1);}
+ return n;
+}
+function renderRuns(){
+ document.getElementById('runRecords').innerHTML=data.runs.length?data.runs.slice(0,6).map(r=>`<div class="record"><div><strong>${escapeHtml(r.distance)} km · ${escapeHtml(r.type)}</strong><small>${escapeHtml(r.date)}</small></div><div style="text-align:right"><strong>${escapeHtml(r.minutes)} min</strong><small>${(Number(r.minutes)/Number(r.distance)).toFixed(2)} min/km</small></div></div>`).join(''):'<div class="empty">No runs logged yet. Add your first session above.</div>';
+}
+function renderRecovery(){
+ document.getElementById('recoveryRecords').innerHTML=data.recoveries.length?data.recoveries.slice(0,3).map(r=>`<div class="record"><div><strong>${escapeHtml(r.sleep)} h sleep · ${escapeHtml(r.energy)}</strong><small>${escapeHtml(r.date)}</small>${r.notes?`<small style="display:block">${escapeHtml(r.notes)}</small>`:''}</div></div>`).join(''):'<div class="empty">No recovery check-ins yet.</div>';
+}
+function renderWeek(){
+ let total=0,possible=35;for(let i=0;i<7;i++){const d=new Date();d.setDate(d.getDate()-i);const k=d.toLocaleDateString('en-CA');total+=baseChallenges.filter(c=>(data.challenges[k]||{})[c.id]).length;}
+ document.getElementById('weekBar').style.width=(total/possible*100)+'%';
+ document.getElementById('weekText').textContent=`${total} of ${possible} possible challenge check-offs in the last 7 days.`;
+}
+function render(){
+ renderChallenges();renderRuns();renderRecovery();renderWeek();
+ document.getElementById('statRuns').textContent=data.runs.length;
+ document.getElementById('statKm').innerHTML=data.runs.reduce((s,r)=>s+Number(r.distance),0).toFixed(1)+' <small>km</small>';
+ document.getElementById('statStreak').innerHTML=streak()+' <small>days</small>';
+}
+document.getElementById('runForm').addEventListener('submit',e=>{
+ e.preventDefault();const distance=Number(document.getElementById('distance').value),minutes=Number(document.getElementById('minutes').value);
+ if(!(distance>0&&minutes>0)){toast('Enter a valid distance and time.');return;}
+ data.runs.unshift({distance:distance.toFixed(1),minutes:Math.round(minutes),type:document.getElementById('runType').value,date:new Date().toLocaleDateString()});
+ data.runs=data.runs.slice(0,200);e.target.reset();save();toast('Run saved successfully!');
+});
+document.getElementById('recoveryForm').addEventListener('submit',e=>{
+ e.preventDefault();data.recoveries.unshift({sleep:Number(document.getElementById('sleep').value),energy:document.getElementById('energy').value,notes:document.getElementById('notes').value.trim(),date:new Date().toLocaleDateString()});
+ data.recoveries=data.recoveries.slice(0,100);e.target.reset();save();toast('Recovery check-in saved!');
+});
+document.getElementById('exportBtn').addEventListener('click',()=>{
+ const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='beast-mode-backup.json';a.click();URL.revokeObjectURL(a.href);toast('Backup exported.');
+});
+document.getElementById('importBtn').addEventListener('click',()=>document.getElementById('importFile').click());
+document.getElementById('importFile').addEventListener('change',async e=>{
+ const file=e.target.files[0];if(!file)return;try{const imported=JSON.parse(await file.text());if(!imported||!Array.isArray(imported.runs)||!Array.isArray(imported.recoveries)||typeof imported.challenges!=='object')throw Error();data=imported;save();toast('Backup imported!');}catch{toast('That backup file is not valid.');}e.target.value='';
+});
+document.getElementById('resetBtn').addEventListener('click',()=>{
+ if(confirm('Delete all Beast Mode records stored in this browser? Export a backup first if you want to keep them.')){data=safeDefault();save();toast('All local records reset.');}
+});
+render();
+})();
+</script>
+</body>
+</html>
